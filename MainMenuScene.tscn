@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3pkgevnia1d8"]
+
+[ext_resource type="Script" path="res://Controls/MainMenuControl.cs" id="1_s5w61"]
+[ext_resource type="FontFile" uid="uid://bgwmm6qqmxq5h" path="res://Hack_Regular.ttf" id="2_rvqbj"]
+
+[node name="MainMenuContainer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5w61")
+
+[node name="ControlsContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvqbj")
+theme_override_font_sizes/font_size = 42
+text = "F U N N Y   P U Z Z L E"
+horizontal_alignment = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="ControlsContainer"]
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvqbj")
+text = "New Game"
+
+[node name="ScoresButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvqbj")
+text = "Scores"
+
+[node name="ExitButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvqbj")
+text = "Exit"
+
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/NewGameButton" to="." method="_OnNewGameButtonPressed"]
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/ScoresButton" to="." method="_OnScoresButtonPressed"]
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/ExitButton" to="." method="_OnExitButtonPressed"]

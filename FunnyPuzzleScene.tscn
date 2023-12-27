@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://drwe50scx743t"]
+
+[ext_resource type="PackedScene" uid="uid://b0yvi5bm0qhu7" path="res://ScoresScene.tscn" id="1_moqq1"]
+[ext_resource type="Script" path="res://Nodes/FunnyPuzzleNode.cs" id="1_w30q6"]
+[ext_resource type="PackedScene" uid="uid://c3pkgevnia1d8" path="res://MainMenuScene.tscn" id="2_brvxc"]
+[ext_resource type="PackedScene" uid="uid://u87p6ben4mir" path="res://PauseMenuScene.tscn" id="3_gm5qx"]
+[ext_resource type="PackedScene" uid="uid://c2ptqqx1ft5w5" path="res://GameOverScene.tscn" id="4_pw7x4"]
+[ext_resource type="AudioStream" uid="uid://cter8que6hs0d" path="res://feeling_puzzle.wav" id="6_5pmoi"]
+[ext_resource type="AudioStream" uid="uid://d3illerdbcby1" path="res://gameover.wav" id="7_bmso3"]
+
+[node name="FunnyPuzzle" type="Node"]
+script = ExtResource("1_w30q6")
+
+[node name="ScoresContainer" parent="." instance=ExtResource("1_moqq1")]
+
+[node name="MainMenuContainer" parent="." instance=ExtResource("2_brvxc")]
+
+[node name="PauseMenuContainer" parent="." instance=ExtResource("3_gm5qx")]
+
+[node name="GameOverContainer" parent="." instance=ExtResource("4_pw7x4")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InformationContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="PointsLabel" type="Label" parent="CenterContainer/InformationContainer"]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="CenterContainer/InformationContainer"]
+layout_mode = 2
+
+[node name="PlayingTimeLabel" type="Label" parent="CenterContainer/InformationContainer"]
+layout_mode = 2
+
+[node name="GameAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5pmoi")
+
+[node name="GameOverPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bmso3")
+
+[connection signal="OnMainMenu" from="ScoresContainer" to="." method="_OnMainMenu"]
+[connection signal="OnExit" from="MainMenuContainer" to="." method="_OnExit"]
+[connection signal="OnNewGame" from="MainMenuContainer" to="." method="_OnNewGame"]
+[connection signal="OnScores" from="MainMenuContainer" to="." method="_OnScores"]
+[connection signal="OnContinue" from="PauseMenuContainer" to="." method="_OnContinue"]
+[connection signal="OnExit" from="PauseMenuContainer" to="." method="_OnExit"]
+[connection signal="OnMainMenu" from="PauseMenuContainer" to="." method="_OnMainMenu"]
+[connection signal="OnRestart" from="PauseMenuContainer" to="." method="_OnRestartGame"]
+[connection signal="OnExit" from="GameOverContainer" to="." method="_OnExit"]
+[connection signal="OnMainMenu" from="GameOverContainer" to="." method="_OnMainMenu"]
+[connection signal="OnRetry" from="GameOverContainer" to="." method="_OnRetry"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ptqqx1ft5w5"]
+
+[ext_resource type="Script" path="res://Controls/GameOverControl.cs" id="1_rctcr"]
+[ext_resource type="FontFile" uid="uid://bgwmm6qqmxq5h" path="res://Hack_Regular.ttf" id="2_8j1jf"]
+
+[node name="GameOverContainer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rctcr")
+
+[node name="ControlsContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8j1jf")
+theme_override_font_sizes/font_size = 42
+text = "G A M E  O V E R"
+horizontal_alignment = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="ControlsContainer"]
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8j1jf")
+text = "Retry"
+
+[node name="ExitButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8j1jf")
+text = "Exit"
+
+[node name="MainMenuButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8j1jf")
+text = "Main Menu"
+
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/RetryButton" to="." method="_OnRetryButtonPressed"]
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/ExitButton" to="." method="_OnExitButtonPressed"]
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/MainMenuButton" to="." method="_OnMainMenuButtonPressed"]

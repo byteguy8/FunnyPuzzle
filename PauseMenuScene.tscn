@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://u87p6ben4mir"]
+
+[ext_resource type="Script" path="res://Controls/PauseMenuControl.cs" id="1_bw5my"]
+[ext_resource type="FontFile" uid="uid://bgwmm6qqmxq5h" path="res://Hack_Regular.ttf" id="2_mkkjf"]
+
+[node name="PauseMenuContainer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bw5my")
+
+[node name="ControlsContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mkkjf")
+theme_override_font_sizes/font_size = 42
+text = "P A U S E"
+horizontal_alignment = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="ControlsContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mkkjf")
+text = "Continue"
+
+[node name="RestartButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mkkjf")
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mkkjf")
+text = "Main Menu"
+
+[node name="ExitButton" type="Button" parent="ControlsContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mkkjf")
+text = "Exit"
+
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/ContinueButton" to="." method="_OnContinueButtonPressed"]
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/RestartButton" to="." method="_OnRestartButtonPressed"]
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/MainMenuButton" to="." method="_OnMainMenuButtonPressed"]
+[connection signal="pressed" from="ControlsContainer/OptionsContainer/ExitButton" to="." method="_OnExitButtonPressed"]
